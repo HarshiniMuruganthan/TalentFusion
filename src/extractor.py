@@ -1,55 +1,48 @@
 """
 extractor.py
 
-Extracts structured information from resume text.
+Extract structured information from resume text.
 """
 
 import re
 
 
 class Extractor:
-    """
-    Extract important candidate information from resume text.
-    """
 
     def extract_name(self, text):
-        """
-        Assume the first non-empty line is the candidate's name.
-        """
-        lines = text.split("\n")
-
-        for line in lines:
-            if line.strip():
-                return line.strip()
-
+        """Extract candidate name (first non-empty line)."""
+        for line in text.split("\n"):
+            line = line.strip()
+            if line:
+                return line
         return ""
 
     def extract_email(self, text):
-        """
-        Extract email using regex.
-        """
+        """Extract email address."""
         match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', text)
-
-        if match:
-            return match.group()
-
-        return ""
+        return match.group(0) if match else ""
 
     def extract_phone(self, text):
-        """
-        Extract Indian phone number.
-        """
+        """Extract Indian phone number."""
         match = re.search(r'(\+91[\s-]?)?[6-9]\d{9}', text)
 
         if match:
-            return match.group()
+            phone = match.group(0)
+            phone = phone.replace(" ", "").replace("-", "")
+
+            if not phone.startswith("+91"):
+                if phone.startswith("91"):
+                    phone = "+" + phone
+                else:
+                    phone = "+91" + phone
+
+            return phone
 
         return ""
 
     def extract_location(self, text):
-        """
-        Extract location from resume.
-        """
+        """Extract location."""
+
         lines = text.split("\n")
 
         for i, line in enumerate(lines):
@@ -62,40 +55,35 @@ class Extractor:
         return ""
 
     def extract_skills(self, text):
-        """
-        Extract known technical skills.
-        """
+        """Extract technical skills."""
 
-        skill_list = [
+        skills = [
             "Python",
             "Java",
-            "C",
-            "C++",
             "SQL",
+            "JavaScript",
             "React",
             "Node.js",
-            "JavaScript",
             "Machine Learning",
+            "Git",
+            "MongoDB",
             "HTML",
             "CSS",
-            "Git",
-            "MongoDB"
+            "C++"
         ]
 
         found = []
 
         lower_text = text.lower()
 
-        for skill in skill_list:
+        for skill in skills:
             if skill.lower() in lower_text:
                 found.append(skill)
 
-        return found
+        return list(dict.fromkeys(found))
 
     def extract_education(self, text):
-        """
-        Extract education details.
-        """
+        """Extract education."""
 
         education = []
 
@@ -109,19 +97,17 @@ class Extractor:
             "MBA"
         ]
 
-        lines = text.split("\n")
+        for line in text.split("\n"):
 
-        for line in lines:
             for keyword in keywords:
+
                 if keyword.lower() in line.lower():
                     education.append(line.strip())
 
         return education
 
     def extract_experience(self, text):
-        """
-        Extract experience section.
-        """
+        """Extract experience section."""
 
         experience = []
 
@@ -131,23 +117,22 @@ class Extractor:
 
         for line in lines:
 
-            if "EXPERIENCE" in line.upper():
+            line = line.strip()
+
+            if line.upper() == "EXPERIENCE":
                 capture = True
                 continue
 
-            if "EDUCATION" in line.upper():
+            if line.upper() == "EDUCATION":
                 break
 
-            if capture:
-                if line.strip():
-                    experience.append(line.strip())
+            if capture and line:
+                experience.append(line)
 
         return experience
 
     def extract_all(self, text):
-        """
-        Extract all candidate information.
-        """
+        """Extract all candidate details."""
 
         return {
             "name": self.extract_name(text),
