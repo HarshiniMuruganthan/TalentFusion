@@ -1,9 +1,21 @@
+"""
+extractor.py
+
+Extracts structured information from resume text.
+"""
+
 import re
 
 
 class Extractor:
+    """
+    Extract important candidate information from resume text.
+    """
 
     def extract_name(self, text):
+        """
+        Assume the first non-empty line is the candidate's name.
+        """
         lines = text.split("\n")
 
         for line in lines:
@@ -12,8 +24,10 @@ class Extractor:
 
         return ""
 
-
     def extract_email(self, text):
+        """
+        Extract email using regex.
+        """
         match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', text)
 
         if match:
@@ -21,8 +35,10 @@ class Extractor:
 
         return ""
 
-
     def extract_phone(self, text):
+        """
+        Extract Indian phone number.
+        """
         match = re.search(r'(\+91[\s-]?)?[6-9]\d{9}', text)
 
         if match:
@@ -30,9 +46,10 @@ class Extractor:
 
         return ""
 
-
     def extract_location(self, text):
-
+        """
+        Extract location from resume.
+        """
         lines = text.split("\n")
 
         for i, line in enumerate(lines):
@@ -43,7 +60,11 @@ class Extractor:
                     return lines[i + 1].strip()
 
         return ""
-        def extract_skills(self, text):
+
+    def extract_skills(self, text):
+        """
+        Extract known technical skills.
+        """
 
         skill_list = [
             "Python",
@@ -66,13 +87,15 @@ class Extractor:
         lower_text = text.lower()
 
         for skill in skill_list:
-
             if skill.lower() in lower_text:
                 found.append(skill)
 
         return found
-    
-        def extract_education(self, text):
+
+    def extract_education(self, text):
+        """
+        Extract education details.
+        """
 
         education = []
 
@@ -86,15 +109,19 @@ class Extractor:
             "MBA"
         ]
 
-        for line in text.split("\n"):
+        lines = text.split("\n")
 
-            for word in keywords:
-
-                if word.lower() in line.lower():
+        for line in lines:
+            for keyword in keywords:
+                if keyword.lower() in line.lower():
                     education.append(line.strip())
 
         return education
-        def extract_experience(self, text):
+
+    def extract_experience(self, text):
+        """
+        Extract experience section.
+        """
 
         experience = []
 
@@ -111,26 +138,23 @@ class Extractor:
             if "EDUCATION" in line.upper():
                 break
 
-            if capture and line.strip():
-                experience.append(line.strip())
+            if capture:
+                if line.strip():
+                    experience.append(line.strip())
 
         return experience
-        def extract_all(self, text):
+
+    def extract_all(self, text):
+        """
+        Extract all candidate information.
+        """
 
         return {
-
             "name": self.extract_name(text),
-
             "email": self.extract_email(text),
-
             "phone": self.extract_phone(text),
-
             "location": self.extract_location(text),
-
             "skills": self.extract_skills(text),
-
             "education": self.extract_education(text),
-
             "experience": self.extract_experience(text)
-
         }
