@@ -1,26 +1,9 @@
+
+
 {
-    "fields":[
-        "candidate_id",
-        "full_name",
-        "emails",
-        "phones",
-        "location",
-        "headline",
-        "years_experience",
-        "skills",
-        "experience",
-        "education",
-        "provenance",
-        "overall_confidence"
-    ],
-
-    "include_confidence": true,
-
-    "include_provenance": true,
-
-    "missing_value": null,
-
-    "rename":{
-
-    }
+    "enable_provenance": true,
+    "enable_confidence": true,
+    "enable_profile_health": true,
+    "enable_validation": true,
+    "output_file": "output/result.json"
 }
