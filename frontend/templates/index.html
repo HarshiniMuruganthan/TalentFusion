@@ -4,106 +4,224 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>TalentFusion AI</title>
 
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Icons -->
+
     <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
 <body>
 
-    <div class="background"></div>
+<!-- Animated Background -->
 
-    <div class="container">
+<div class="bg-gradient"></div>
 
-        <div class="glass-card">
+<div class="grid-overlay"></div>
 
-            <h1>TalentFusion AI</h1>
+<div class="blur-circle one"></div>
 
-            <p class="subtitle">
-                Intelligent Candidate Data Transformation Engine
-            </p>
+<div class="blur-circle two"></div>
 
-            <!-- Upload Form -->
+<!-- ===========================
+        NAVIGATION
+============================ -->
 
-            <form id="uploadForm">
+<nav class="navbar">
 
-                <div class="upload-box">
-                    <label>Resume PDF</label>
-                    <input type="file" id="resume" required>
-                </div>
+    <div class="logo">
 
-                <div class="upload-box">
-                    <label>Recruiter CSV</label>
-                    <input type="file" id="csv" required>
-                </div>
+        <i class="fa-solid fa-brain"></i>
 
-                <button type="submit">
-                    Transform Candidate
-                </button>
+        <span>TalentFusion AI</span>
 
-            </form>
+    </div>
 
-            <!-- Processing -->
+    <div class="nav-links">
 
-            <div id="processing" style="display:none;">
+        <a href="#">Dashboard</a>
 
-                <h2>🤖 AI Engine Processing...</h2>
+        <a href="#">Pipeline</a>
 
-                <div class="progress-container">
-                    <div id="progress-bar"></div>
-                </div>
+        <a href="#">Analytics</a>
 
-                <ul id="steps">
+        <a href="#">About</a>
 
-                    <li>📄 Reading Resume...</li>
+    </div>
 
-                    <li>📊 Reading Recruiter CSV...</li>
+</nav>
 
-                    <li>🧠 Extracting Candidate Data...</li>
+<!-- ===========================
+          HERO
+============================ -->
 
-                    <li>✨ Normalizing Data...</li>
+<section class="hero">
 
-                    <li>🔗 Merging Information...</li>
+    <div class="hero-left">
 
-                    <li>📈 Calculating Confidence...</li>
+        <span class="badge">
 
-                    <li>🛡 Validating Profile...</li>
+            Intelligent Candidate Transformation Engine
 
-                    <li>📦 Generating JSON...</li>
+        </span>
 
-                </ul>
+        <h1>
+
+            Transform
+            <span>Resume Data</span>
+
+            Into
+
+            Enterprise Ready
+
+            Candidate Intelligence
+
+        </h1>
+
+        <p>
+
+            TalentFusion AI automatically extracts,
+            validates, merges, scores and enriches
+            candidate profiles from Resume PDFs
+            and Recruiter CSVs using an intelligent
+            transformation pipeline.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn">
+
+                <i class="fa-solid fa-rocket"></i>
+
+                Start Transformation
+
+            </button>
+
+            <button class="secondary-btn">
+
+                <i class="fa-solid fa-circle-play"></i>
+
+                Watch Demo
+
+            </button>
+
+        </div>
+
+        <div class="stats">
+
+            <div>
+
+                <h2>98%</h2>
+
+                <p>Accuracy</p>
 
             </div>
 
-            <!-- Dashboard -->
+            <div>
 
-            <div id="dashboard" style="display:none; margin-top:40px;">
+                <h2>50K+</h2>
 
-                <h2>Candidate Profile</h2>
+                <p>Profiles</p>
 
-                <div class="card">
+            </div>
 
-                    <h3 id="name"></h3>
+            <div>
 
-                    <p><strong>Email:</strong> <span id="email"></span></p>
+                <h2>0.95</h2>
 
-                    <p><strong>Phone:</strong> <span id="phone"></span></p>
+                <p>Confidence</p>
 
-                    <p><strong>Company:</strong> <span id="company"></span></p>
+            </div>
 
-                    <p><strong>Designation:</strong> <span id="designation"></span></p>
+        </div>
 
-                    <p><strong>Location:</strong> <span id="location"></span></p>
+    </div>
 
-                    <p><strong>Confidence:</strong> <span id="confidence"></span></p>
+    <!-- Right Side Illustration -->
 
-                    <p><strong>Trust Score:</strong> <span id="trust"></span></p>
+    <div class="hero-right">
 
-                    <h3 style="margin-top:20px;">Skills</h3>
+        <div class="hero-card">
 
-                    <div id="skills"></div>
+            <div class="card-top">
+
+                <span class="online"></span>
+
+                AI Engine Running
+
+            </div>
+
+            <div class="ai-circle">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="status">
+
+                <p>
+
+                    Resume Extraction
+
+                </p>
+
+                <div class="bar">
+
+                    <div class="fill fill1"></div>
+
+                </div>
+
+            </div>
+
+            <div class="status">
+
+                <p>
+
+                    Conflict Resolution
+
+                </p>
+
+                <div class="bar">
+
+                    <div class="fill fill2"></div>
+
+                </div>
+
+            </div>
+
+            <div class="status">
+
+                <p>
+
+                    Profile Validation
+
+                </p>
+
+                <div class="bar">
+
+                    <div class="fill fill3"></div>
 
                 </div>
 
@@ -113,7 +231,589 @@
 
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</section>
+<div id="dashboard" class="dashboard">
+
+    <div class="dashboard-header">
+
+        <div class="avatar">
+
+            <div class="avatar-ring"></div>
+
+            <div class="avatar-center">
+                AI
+            </div>
+
+        </div>
+
+        <div>
+
+            <h2 id="name">Candidate Name</h2>
+
+            <p class="role" id="designation">
+                Software Engineer
+            </p>
+
+            <span class="badge">
+                VERIFIED PROFILE
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Metrics -->
+
+    <div class="metric-grid">
+
+        <div class="metric-card">
+
+            <span>Confidence</span>
+
+            <h3 id="confidence">95%</h3>
+
+        </div>
+
+        <div class="metric-card">
+
+            <span>Trust Score</span>
+
+            <h3 id="trust">98</h3>
+
+        </div>
+
+        <div class="metric-card">
+
+            <span>Company</span>
+
+            <h3 id="company">TCS</h3>
+
+        </div>
+
+        <div class="metric-card">
+
+            <span>Location</span>
+
+            <h3 id="location">Chennai</h3>
+
+        </div>
+
+    </div>
+
+
+    <!-- Candidate Information -->
+
+    <div class="profile-card">
+
+        <div class="profile-item">
+
+            <h4>Email</h4>
+
+            <p id="email"></p>
+
+        </div>
+
+        <div class="profile-item">
+
+            <h4>Phone</h4>
+
+            <p id="phone"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Skills -->
+
+    <div class="skills-card">
+
+        <h3>AI Detected Skills</h3>
+
+        <div id="skills" class="skills-container">
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ===========================
+     AI DASHBOARD
+============================ -->
+
+<section id="dashboard" class="dashboard">
+
+    <div class="dashboard-title">
+
+        <h2>
+            Candidate Intelligence Profile
+        </h2>
+
+        <p>
+            Unified profile generated by TalentFusion AI
+        </p>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+        <!-- LEFT PANEL -->
+
+        <div class="profile-panel glass">
+
+            <div class="avatar">
+
+                <div class="avatar-circle">
+                    <span id="avatarLetter">H</span>
+                </div>
+
+            </div>
+
+            <h2 id="name">
+                Candidate Name
+            </h2>
+
+            <p id="designation">
+                Software Engineer
+            </p>
+
+            <div class="company-chip">
+
+                <span id="company">
+                    TCS
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+
+        <div class="info-panel glass">
+
+            <div class="info-item">
+
+                <label>Email</label>
+
+                <p id="email"></p>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Phone</label>
+
+                <p id="phone"></p>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Location</label>
+
+                <p id="location"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- METRIC CARDS -->
+
+    <div class="metrics">
+
+        <div class="metric-card">
+
+            <h4>Confidence</h4>
+
+            <span id="confidence">95%</span>
+
+        </div>
+
+        <div class="metric-card">
+
+            <h4>Trust Score</h4>
+
+            <span id="trust">98</span>
+
+        </div>
+
+        <div class="metric-card">
+
+            <h4>Skills</h4>
+
+            <span id="skillCount">0</span>
+
+        </div>
+
+        <div class="metric-card">
+
+            <h4>Status</h4>
+
+            <span class="online">
+                VERIFIED
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- SKILLS -->
+
+    <div class="glass skills-section">
+
+        <h3>
+            Technical Skills
+        </h3>
+
+        <div id="skills" class="skills-list">
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+        AI ANALYTICS CENTER
+====================================== -->
+
+<section class="analytics-section">
+
+    <div class="section-title">
+
+        <h2>AI Profile Analytics</h2>
+
+        <p>
+            Machine-generated insights and quality assessment
+        </p>
+
+    </div>
+
+    <div class="analytics-grid">
+
+        <!-- Confidence -->
+
+        <div class="glass analytics-card">
+
+            <div class="circle confidence-circle">
+
+                <div class="circle-inner">
+
+                    <h1 id="confidenceCircle">
+                        95%
+                    </h1>
+
+                    <span>Confidence</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Trust -->
+
+        <div class="glass analytics-card">
+
+            <div class="circle trust-circle">
+
+                <div class="circle-inner">
+
+                    <h1 id="trustCircle">
+                        98
+                    </h1>
+
+                    <span>Trust Score</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Data Quality -->
+
+        <div class="glass analytics-card">
+
+            <div class="quality-box">
+
+                <h3>Data Quality</h3>
+
+                <h1 id="grade">
+                    A+
+                </h1>
+
+                <p id="qualityScore">
+
+                    Overall Quality Score
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Validation -->
+
+        <div class="glass analytics-card">
+
+            <div class="status-box">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h2 id="validationStatus">
+
+                    VALIDATED
+
+                </h2>
+
+                <p>
+
+                    Enterprise Rules Passed
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+        CONFLICTS & AUDIT
+====================================== -->
+
+<section class="enterprise-section">
+
+    <!-- Conflict Report -->
+
+    <div class="glass enterprise-card">
+
+        <div class="section-header">
+
+            <i class="fa-solid fa-code-compare"></i>
+
+            <div>
+
+                <h2>Conflict Resolution Engine</h2>
+
+                <p>
+                    AI detected inconsistencies between Resume and Recruiter CSV
+                </p>
+
+            </div>
+
+        </div>
+
+        <div id="conflictsContainer">
+
+            <div class="conflict-card">
+
+                <div class="conflict-field">
+
+                    <h4>Name</h4>
+
+                </div>
+
+                <div class="conflict-values">
+
+                    <div>
+
+                        <label>Resume</label>
+
+                        <p>Harshini M</p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Recruiter CSV</label>
+
+                        <p>Harshini</p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Winner</label>
+
+                        <span class="winner">
+
+                            Recruiter CSV
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Audit Timeline -->
+
+    <div class="glass enterprise-card">
+
+        <div class="section-header">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <div>
+
+                <h2>Pipeline Audit Trail</h2>
+
+                <p>
+
+                    Every transformation step performed by TalentFusion AI
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div id="auditTimeline" class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h4>Resume Loaded</h4>
+
+                    <p>
+
+                        Candidate resume imported successfully
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h4>Extraction Completed</h4>
+
+                    <p>
+
+                        AI extracted candidate information
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h4>Normalization</h4>
+
+                    <p>
+
+                        Data standardized into enterprise format
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot success"></div>
+
+                <div class="timeline-content">
+
+                    <h4>Validation Passed</h4>
+
+                    <p>
+
+                        Candidate profile verified successfully
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+        DOWNLOAD SECTION
+====================================== -->
+
+<section class="download-section">
+
+    <div class="glass download-card">
+
+        <h2>
+
+            Export Candidate Intelligence
+
+        </h2>
+
+        <p>
+
+            Download AI generated reports and candidate profile.
+
+        </p>
+
+        <div class="download-buttons">
+
+            <button>
+
+                <i class="fa-solid fa-file-code"></i>
+
+                Candidate JSON
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                Transformation Report
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Audit Log
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
