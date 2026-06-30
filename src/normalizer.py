@@ -1,7 +1,7 @@
 """
 normalizer.py
 
-Normalizes extracted candidate data.
+Normalize candidate information.
 """
 
 import re
@@ -9,98 +9,50 @@ import re
 
 class Normalizer:
 
-    def normalize_email(self, email):
-        """
-        Convert email to lowercase.
-        """
-        if not email:
-            return ""
-
-        return email.strip().lower()
-
-    def normalize_phone(self, phone):
-        """
-        Remove spaces and convert to standard format.
-        """
-
-        if not phone:
-            return ""
-
-        phone = re.sub(r"\D", "", phone)
-
-        if phone.startswith("91") and len(phone) == 12:
-            return "+" + phone
-
-        elif len(phone) == 10:
-            return "+91" + phone
-
-        return phone
-
-    def normalize_name(self, name):
-        """
-        Convert name to title case.
-        """
-
-        if not name:
-            return ""
-
-        return name.strip().title()
-
-    def normalize_location(self, location):
-        """
-        Remove unwanted spaces.
-        """
-
-        if not location:
-            return ""
-
-        return " ".join(location.split())
-
-    def normalize_skills(self, skills):
-        """
-        Remove duplicates and normalize skill names.
-        """
-
-        skill_map = {
-            "python": "Python",
-            "java": "Java",
-            "javascript": "JavaScript",
-            "react": "React",
-            "reactjs": "React",
-            "sql": "SQL",
-            "git": "Git",
-            "machine learning": "Machine Learning",
-            "mongodb": "MongoDB",
-            "html": "HTML",
-            "css": "CSS"
-        }
-
-        normalized = []
-
-        for skill in skills:
-
-            key = skill.strip().lower()
-
-            if key in skill_map:
-                normalized.append(skill_map[key])
-            else:
-                normalized.append(skill.title())
-
-        return list(dict.fromkeys(normalized))
-
     def normalize(self, candidate):
-        """
-        Normalize all extracted fields.
-        """
 
-        candidate["name"] = self.normalize_name(candidate["name"])
+        # Name
+        if candidate.get("name"):
+            candidate["name"] = candidate["name"].strip().title()
 
-        candidate["email"] = self.normalize_email(candidate["email"])
+        # Email
+        if candidate.get("email"):
+            candidate["email"] = candidate["email"].strip().lower()
 
-        candidate["phone"] = self.normalize_phone(candidate["phone"])
+        # Phone
+        if candidate.get("phone"):
 
-        candidate["location"] = self.normalize_location(candidate["location"])
+            phone = str(candidate["phone"])
 
-        candidate["skills"] = self.normalize_skills(candidate["skills"])
+            # Remove everything except digits
+            phone = re.sub(r"\D", "", phone)
+
+            # Handle 12 digits starting with 91
+            if len(phone) == 12 and phone.startswith("91"):
+                phone = phone[2:]
+
+            # Convert 10-digit number to +91 format
+            if len(phone) == 10:
+                phone = "+91" + phone
+
+            candidate["phone"] = phone
+
+        # Location
+        if candidate.get("location"):
+            candidate["location"] = candidate["location"].strip().title()
+
+        # Skills
+        if candidate.get("skills"):
+
+            skills = []
+
+            for skill in candidate["skills"]:
+
+                skill = skill.strip()
+
+                if skill not in skills:
+                    skills.append(skill)
+
+            candidate["skills"] = skills
 
         return candidate

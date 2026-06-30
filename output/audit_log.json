@@ -1,0 +1,98 @@
+[
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Reader",
+        "action": "Recruiter CSV Loaded",
+        "details": "recruiter.csv successfully loaded"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Reader",
+        "action": "Resume Loaded",
+        "details": "resume.pdf successfully loaded"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Extractor",
+        "action": "Candidate Extracted",
+        "details": "Candidate: Harshini M"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Normalizer",
+        "action": "Normalization Completed",
+        "details": "Name, Email and Phone normalized"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Merger",
+        "action": "Merge Completed",
+        "details": "Resume merged with Recruiter CSV"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Resolver",
+        "action": "Conflict Resolution",
+        "details": "2 conflicts detected"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Normalizer",
+        "action": "Post Merge Normalization",
+        "details": "Final data standardized"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Provenance",
+        "action": "Source Mapping Completed",
+        "details": ""
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Confidence",
+        "action": "Confidence Calculated",
+        "details": "Overall Confidence = 0.95"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Rule Engine",
+        "action": "Business Rules Evaluated",
+        "details": "All hiring rules checked"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Analyzer",
+        "action": "Profile Health Generated",
+        "details": ""
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Validator",
+        "action": "Validation Completed",
+        "details": "Status = True"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Data Quality",
+        "action": "Quality Score Calculated",
+        "details": "Overall Score = 93"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Generator",
+        "action": "Candidate JSON Generated",
+        "details": "output/result.json"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Report",
+        "action": "Transformation Report Generated",
+        "details": "output/transformation_report.json"
+    },
+    {
+        "timestamp": "2026-06-30 11:36:03",
+        "module": "Pipeline",
+        "action": "Execution Completed",
+        "details": ""
+    }
+]

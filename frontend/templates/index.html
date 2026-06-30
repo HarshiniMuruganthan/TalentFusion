@@ -1,13 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>TalentFusion</title>
+
+    <meta charset="UTF-8">
+    <title>TalentFusion AI</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
+
 <body>
 
-<h1>TalentFusion AI</h1>
+    <div class="background"></div>
 
-<p>Frontend Connected Successfully!</p>
+    <div class="container">
+
+        <div class="glass-card">
+
+            <h1>TalentFusion AI</h1>
+
+            <p class="subtitle">
+                Intelligent Candidate Data Transformation Engine
+            </p>
+
+            <!-- Upload Form -->
+
+            <form id="uploadForm">
+
+                <div class="upload-box">
+                    <label>Resume PDF</label>
+                    <input type="file" id="resume" required>
+                </div>
+
+                <div class="upload-box">
+                    <label>Recruiter CSV</label>
+                    <input type="file" id="csv" required>
+                </div>
+
+                <button type="submit">
+                    Transform Candidate
+                </button>
+
+            </form>
+
+            <!-- Processing -->
+
+            <div id="processing" style="display:none;">
+
+                <h2>🤖 AI Engine Processing...</h2>
+
+                <div class="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
+
+                <ul id="steps">
+
+                    <li>📄 Reading Resume...</li>
+
+                    <li>📊 Reading Recruiter CSV...</li>
+
+                    <li>🧠 Extracting Candidate Data...</li>
+
+                    <li>✨ Normalizing Data...</li>
+
+                    <li>🔗 Merging Information...</li>
+
+                    <li>📈 Calculating Confidence...</li>
+
+                    <li>🛡 Validating Profile...</li>
+
+                    <li>📦 Generating JSON...</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Dashboard -->
+
+            <div id="dashboard" style="display:none; margin-top:40px;">
+
+                <h2>Candidate Profile</h2>
+
+                <div class="card">
+
+                    <h3 id="name"></h3>
+
+                    <p><strong>Email:</strong> <span id="email"></span></p>
+
+                    <p><strong>Phone:</strong> <span id="phone"></span></p>
+
+                    <p><strong>Company:</strong> <span id="company"></span></p>
+
+                    <p><strong>Designation:</strong> <span id="designation"></span></p>
+
+                    <p><strong>Location:</strong> <span id="location"></span></p>
+
+                    <p><strong>Confidence:</strong> <span id="confidence"></span></p>
+
+                    <p><strong>Trust Score:</strong> <span id="trust"></span></p>
+
+                    <h3 style="margin-top:20px;">Skills</h3>
+
+                    <div id="skills"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
+
 </html>

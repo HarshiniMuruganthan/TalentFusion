@@ -1,7 +1,5 @@
 """
 validator.py
-
-Validates candidate profile.
 """
 
 import re
@@ -13,47 +11,40 @@ class Validator:
 
         errors = []
 
-        # Required fields
-        required_fields = [
-            "name",
-            "email",
-            "phone",
-            "company",
-            "designation"
-        ]
+        # Name
+        if not candidate.get("name"):
+            errors.append("Name missing.")
 
-        for field in required_fields:
-
-            value = candidate.get(field)
-
-            if not value:
-                errors.append(f"{field} is missing.")
-
-        # Email validation
+        # Email
         email = candidate.get("email", "")
 
-        if email:
-            pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        if not re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email):
+            errors.append("Invalid email.")
 
-            if not re.match(pattern, email):
-                errors.append("Invalid email format.")
-
-        # Phone validation
+        # Phone
         phone = candidate.get("phone", "")
 
-        if phone:
+        # Remove symbols
+        digits = re.sub(r"\D", "", phone)
 
-            digits = re.sub(r"\D", "", phone)
+        valid = False
 
-            if len(digits) != 12:
-                errors.append("Invalid phone number.")
+        if len(digits) == 10:
+            valid = True
+
+        elif len(digits) == 12 and digits.startswith("91"):
+            valid = True
+
+        if not valid:
+            errors.append("Invalid phone number.")
+
+        # Skills
+        if len(candidate.get("skills", [])) == 0:
+            errors.append("No skills found.")
 
         candidate["validation"] = {
-
             "is_valid": len(errors) == 0,
-
             "errors": errors
-
         }
 
         return candidate

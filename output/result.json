@@ -1,5 +1,5 @@
 {
-    "name": "Harshini M",
+    "name": "Harshini",
     "email": "harshini@gmail.com",
     "phone": "+919876543210",
     "location": "Chennai, India",
@@ -23,6 +23,24 @@
     ],
     "company": "TCS",
     "designation": "Software Engineer",
+    "conflicts": [
+        {
+            "field": "name",
+            "resume_value": "Harshini M",
+            "csv_value": "Harshini",
+            "selected_value": "Harshini",
+            "winner": "Recruiter CSV",
+            "reason": "Recruiter CSV has higher priority"
+        },
+        {
+            "field": "phone",
+            "resume_value": "+919876543210",
+            "csv_value": "9876543210",
+            "selected_value": "9876543210",
+            "winner": "Recruiter CSV",
+            "reason": "Recruiter CSV has higher priority"
+        }
+    ],
     "provenance": {
         "name": "Resume",
         "email": "Resume",
@@ -46,6 +64,10 @@
         "designation": 0.9
     },
     "overall_confidence": 0.95,
+    "rule_engine": {
+        "passed": true,
+        "failed_rules": []
+    },
     "profile_health": {
         "completion": 100,
         "trust_score": 98,
@@ -56,5 +78,13 @@
     "validation": {
         "is_valid": true,
         "errors": []
+    },
+    "data_quality": {
+        "completeness": 100,
+        "accuracy": 95,
+        "consistency": 80,
+        "validity": 100,
+        "overall_score": 93,
+        "grade": "A+"
     }
 }
