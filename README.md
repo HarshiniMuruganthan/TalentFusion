@@ -2,9 +2,9 @@
 
 ## Overview
 
-TalentFusion is an intelligent backend pipeline that transforms candidate information collected from multiple sources into a single, structured, and reliable candidate profile.
+TalentFusion is an intelligent candidate data transformation pipeline that consolidates information from multiple data sources into a single, structured, and reliable candidate profile.
 
-The system processes a candidate's resume and recruiter CSV data, extracts relevant information, normalizes the data, resolves conflicts, validates the profile, evaluates data quality, and generates a unified output with complete traceability.
+The system extracts information from a candidate's resume and recruiter CSV, normalizes the data, merges records, resolves conflicts, validates the final profile, calculates confidence and quality scores, and generates a complete transformation report along with an audit trail.
 
 ---
 
@@ -13,7 +13,7 @@ The system processes a candidate's resume and recruiter CSV data, extracts relev
 - Resume Information Extraction
 - Data Normalization
 - Multi-Source Data Merging
-- Conflict Resolution Engine
+- Conflict Resolution
 - Provenance Tracking
 - Confidence Score Calculation
 - Business Rule Validation
@@ -31,32 +31,32 @@ The system processes a candidate's resume and recruiter CSV data, extracts relev
 TalentFusion/
 │
 ├── input/
-│   ├── resume.pdf
-│   └── recruiter.csv
+│   ├── recruiter.csv
+│   └── resume.pdf
 │
 ├── output/
+│   ├── audit_log.json
 │   ├── result.json
-│   ├── transformation_report.json
-│   └── audit_log.json
+│   └── transformation_report.json
 │
-├── reader.py
-├── extractor.py
-├── normalizer.py
-├── merger.py
-├── resolver.py
-├── provenance.py
-├── confidence.py
 ├── analyzer.py
-├── validator.py
-├── generator.py
-├── report.py
 ├── audit.py
-├── rule_engine.py
-├── data_quality.py
-├── config_loader.py
+├── confidence.py
 ├── config.json
+├── config_loader.py
+├── data_quality.py
+├── extractor.py
+├── generator.py
 ├── main.py
+├── merger.py
+├── normalizer.py
+├── provenance.py
+├── reader.py
+├── report.py
 ├── requirements.txt
+├── resolver.py
+├── rule_engine.py
+├── validator.py
 └── README.md
 ```
 
@@ -80,13 +80,13 @@ Clone the repository.
 git clone https://github.com/HarshiniMuruganthan/TalentFusion.git
 ```
 
-Move into the project directory.
+Move to the project directory.
 
 ```bash
 cd TalentFusion
 ```
 
-Install the required dependencies.
+Install dependencies.
 
 ```bash
 pip install -r requirements.txt
@@ -96,7 +96,7 @@ pip install -r requirements.txt
 
 # Running the Project
 
-Run the pipeline using:
+Execute the pipeline using:
 
 ```bash
 python main.py
@@ -106,25 +106,25 @@ python main.py
 
 # Input Files
 
-Place the following files inside the **input** folder.
+Place the following files inside the **input** directory.
 
 ```text
 input/
-├── resume.pdf
-└── recruiter.csv
+├── recruiter.csv
+└── resume.pdf
 ```
 
 ---
 
 # Output Files
 
-After successful execution, the following files will be generated inside the **output** folder.
+After execution, the generated files will be available inside the **output** directory.
 
 ```text
 output/
+├── audit_log.json
 ├── result.json
-├── transformation_report.json
-└── audit_log.json
+└── transformation_report.json
 ```
 
 ---
@@ -132,71 +132,66 @@ output/
 # Pipeline Workflow
 
 ```text
-Resume PDF
-      │
-      ▼
-Reader
-      │
-      ▼
-Extractor
-      │
-      ▼
-Normalizer
-      │
-      ▼
-Merger
-      │
-      ▼
-Conflict Resolver
-      │
-      ▼
-Provenance Tracker
-      │
-      ▼
-Confidence Engine
-      │
-      ▼
-Rule Engine
-      │
-      ▼
-Validator
-      │
-      ▼
-Data Quality Engine
-      │
-      ▼
-Profile Health Analyzer
-      │
-      ▼
-JSON Generator
-      │
-      ▼
-Transformation Report
-      │
-      ▼
-Audit Log
+Resume PDF + Recruiter CSV
+            │
+            ▼
+         Reader
+            │
+            ▼
+       Information
+       Extraction
+            │
+            ▼
+     Data Normalization
+            │
+            ▼
+      Multi-Source Merge
+            │
+            ▼
+    Conflict Resolution
+            │
+            ▼
+   Provenance Tracking
+            │
+            ▼
+ Confidence Score Engine
+            │
+            ▼
+    Business Rule Engine
+            │
+            ▼
+     Candidate Validation
+            │
+            ▼
+   Data Quality Analysis
+            │
+            ▼
+    Profile Health Report
+            │
+            ▼
+ JSON + Report + Audit Log
 ```
 
 ---
 
 # Modules
 
-| Module | Description |
-|---------|-------------|
-| Reader | Reads resume PDF and recruiter CSV |
-| Extractor | Extracts candidate details |
+| Module | Responsibility |
+|---------|----------------|
+| Reader | Reads input files |
+| Extractor | Extracts candidate information |
 | Normalizer | Standardizes extracted data |
-| Merger | Combines data from multiple sources |
+| Merger | Merges resume and recruiter data |
 | Resolver | Resolves conflicting values |
-| Provenance | Tracks the source of each field |
+| Provenance | Tracks the source of every field |
 | Confidence | Calculates confidence scores |
-| Rule Engine | Applies business rules |
-| Validator | Validates extracted data |
-| Data Quality | Calculates quality metrics |
-| Analyzer | Generates profile health |
-| Generator | Creates final JSON output |
+| Rule Engine | Applies business validation rules |
+| Validator | Validates the candidate profile |
+| Data Quality | Measures profile quality |
+| Analyzer | Generates profile health metrics |
+| Generator | Produces final JSON output |
 | Report | Generates transformation report |
-| Audit | Maintains execution logs |
+| Audit | Records every pipeline operation |
 
 ---
 
@@ -206,10 +201,10 @@ The pipeline generates:
 
 - Unified Candidate Profile
 - Overall Confidence Score
-- Data Quality Report
+- Data Quality Score
+- Profile Health Report
 - Validation Status
 - Conflict Report
-- Profile Health Report
 - Transformation Report
 - Audit Trail
 
@@ -218,17 +213,17 @@ The pipeline generates:
 # Design Highlights
 
 - Modular pipeline architecture.
-- Configurable processing using `config.json`.
-- Automatic conflict resolution.
-- Provenance tracking for transparency.
+- Configurable processing through `config.json`.
+- Automatic conflict resolution between multiple sources.
+- Provenance tracking for every extracted field.
 - Confidence and quality scoring.
-- Complete audit logging.
+- Complete audit logging for traceability.
 
 ---
 
 # Edge Case Handled
 
-The system handles conflicting candidate information from different sources.
+The system handles conflicting information from multiple data sources.
 
 Example:
 
@@ -244,17 +239,17 @@ Phone : +91 9876543210
 Phone : 9876543210
 ```
 
-The Conflict Resolution Engine detects the mismatch, selects the preferred value according to predefined business rules, and records the decision in the audit log.
+The Conflict Resolution Engine detects the mismatch, applies predefined business rules to determine the preferred value, records the selected value, and stores the decision in the audit trail.
 
 ---
 
 # Future Enhancements
 
-- OCR-based resume parsing
-- AI-powered information extraction
+- OCR support for scanned resumes
+- AI-powered resume parsing
 - Database integration
 - REST API support
-- Web dashboard
+- Interactive web dashboard
 - Cloud deployment
 
 ---
@@ -263,6 +258,6 @@ The Conflict Resolution Engine detects the mismatch, selects the preferred value
 
 **Harshini M**
 
-Bachelor of Engineering (Computer Science and Engineering)
+Bachelor of Engineering – Computer Science and Engineering
 
 TalentFusion – Intelligent Candidate Data Transformation Pipeline
