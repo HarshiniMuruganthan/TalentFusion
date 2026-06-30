@@ -1,9 +1,12 @@
 # TalentFusion – Intelligent Candidate Data Transformation Pipeline
+
 ## Overview
 
 TalentFusion is an intelligent backend pipeline that transforms candidate information collected from multiple sources into a single, structured, and reliable candidate profile.
 
 The system processes a candidate's resume and recruiter CSV data, extracts relevant information, normalizes the data, resolves conflicts, validates the profile, evaluates data quality, and generates a unified output with complete traceability.
+
+---
 
 ## Features
 
@@ -20,8 +23,11 @@ The system processes a candidate's resume and recruiter CSV data, extracts relev
 - Transformation Report Generation
 - Audit Trail Logging
 
-## Project Structure
+---
 
+# Project Structure
+
+```text
 TalentFusion/
 │
 ├── input/
@@ -48,25 +54,35 @@ TalentFusion/
 ├── rule_engine.py
 ├── data_quality.py
 ├── config_loader.py
-├── main.py
 ├── config.json
+├── main.py
 ├── requirements.txt
 └── README.md
+```
 
-## Technologies Used
+---
+
+# Technologies Used
 
 - Python 3
-- Regular Expressions
+- Regular Expressions (Regex)
 - JSON
 - CSV
-- Object-Oriented Programming
+- Object-Oriented Programming (OOP)
 
-## Installation
+---
+
+# Installation
 
 Clone the repository.
 
 ```bash
-git clone https://github.com/your-username/TalentFusion.git
+git clone https://github.com/HarshiniMuruganthan/TalentFusion.git
+```
+
+Move into the project directory.
+
+```bash
 cd TalentFusion
 ```
 
@@ -78,9 +94,9 @@ pip install -r requirements.txt
 
 ---
 
-## Running the Project
+# Running the Project
 
-Execute the pipeline using:
+Run the pipeline using:
 
 ```bash
 python main.py
@@ -88,11 +104,11 @@ python main.py
 
 ---
 
-## Input Files
+# Input Files
 
-Place the following files inside the **input/** folder.
+Place the following files inside the **input** folder.
 
-```
+```text
 input/
 ├── resume.pdf
 └── recruiter.csv
@@ -100,11 +116,11 @@ input/
 
 ---
 
-## Output Files
+# Output Files
 
-After successful execution, the following files are generated inside the **output/** directory.
+After successful execution, the following files will be generated inside the **output** folder.
 
-```
+```text
 output/
 ├── result.json
 ├── transformation_report.json
@@ -113,110 +129,140 @@ output/
 
 ---
 
-## Pipeline Workflow
+# Pipeline Workflow
 
-```
-Resume + Recruiter CSV
-          │
-          ▼
+```text
+Resume PDF
+      │
+      ▼
 Reader
-          │
-          ▼
+      │
+      ▼
 Extractor
-          │
-          ▼
+      │
+      ▼
 Normalizer
-          │
-          ▼
+      │
+      ▼
 Merger
-          │
-          ▼
+      │
+      ▼
 Conflict Resolver
-          │
-          ▼
-Provenance Tracking
-          │
-          ▼
+      │
+      ▼
+Provenance Tracker
+      │
+      ▼
 Confidence Engine
-          │
-          ▼
+      │
+      ▼
 Rule Engine
-          │
-          ▼
+      │
+      ▼
 Validator
-          │
-          ▼
-Data Quality
-          │
-          ▼
-Profile Health
-          │
-          ▼
-JSON Output + Report + Audit Log
+      │
+      ▼
+Data Quality Engine
+      │
+      ▼
+Profile Health Analyzer
+      │
+      ▼
+JSON Generator
+      │
+      ▼
+Transformation Report
+      │
+      ▼
+Audit Log
 ```
 
 ---
 
-## Sample Output
+# Modules
 
-The pipeline produces:
+| Module | Description |
+|---------|-------------|
+| Reader | Reads resume PDF and recruiter CSV |
+| Extractor | Extracts candidate details |
+| Normalizer | Standardizes extracted data |
+| Merger | Combines data from multiple sources |
+| Resolver | Resolves conflicting values |
+| Provenance | Tracks the source of each field |
+| Confidence | Calculates confidence scores |
+| Rule Engine | Applies business rules |
+| Validator | Validates extracted data |
+| Data Quality | Calculates quality metrics |
+| Analyzer | Generates profile health |
+| Generator | Creates final JSON output |
+| Report | Generates transformation report |
+| Audit | Maintains execution logs |
+
+---
+
+# Sample Output
+
+The pipeline generates:
 
 - Unified Candidate Profile
 - Overall Confidence Score
-- Data Quality Score
-- Profile Health Report
-- Conflict Report
+- Data Quality Report
 - Validation Status
+- Conflict Report
+- Profile Health Report
 - Transformation Report
 - Audit Trail
 
 ---
 
-## Design Highlights
+# Design Highlights
 
-- Modular architecture with independent processing stages.
-- Configurable pipeline using `config.json`.
-- Automatic conflict resolution for inconsistent data.
-- Provenance tracking for every extracted field.
-- Complete audit trail for transparency and traceability.
+- Modular pipeline architecture.
+- Configurable processing using `config.json`.
+- Automatic conflict resolution.
+- Provenance tracking for transparency.
+- Confidence and quality scoring.
+- Complete audit logging.
 
 ---
 
-## Edge Case Handled
+# Edge Case Handled
 
-The system detects conflicting information between the resume and recruiter CSV.
+The system handles conflicting candidate information from different sources.
 
 Example:
 
-Resume Phone:
+**Resume**
 
-```
-+91 9876543210
-```
-
-Recruiter CSV Phone:
-
-```
-9876543210
+```text
+Phone : +91 9876543210
 ```
 
-The Conflict Resolution Engine identifies the mismatch, applies predefined business rules to determine the preferred value, records the selected result, and logs the decision in the audit trail.
+**Recruiter CSV**
+
+```text
+Phone : 9876543210
+```
+
+The Conflict Resolution Engine detects the mismatch, selects the preferred value according to predefined business rules, and records the decision in the audit log.
 
 ---
 
-## Future Enhancements
+# Future Enhancements
 
-- OCR support for scanned resumes.
-- AI/LLM-based resume parsing.
-- Database integration.
-- REST API support.
-- Interactive web dashboard.
-- Cloud deployment.
+- OCR-based resume parsing
+- AI-powered information extraction
+- Database integration
+- REST API support
+- Web dashboard
+- Cloud deployment
 
 ---
 
-## Author
+# Author
 
-*Harshini M*
-B.E. Computer Science and Engineering
+**Harshini M**
+
+Bachelor of Engineering (Computer Science and Engineering)
+
 TalentFusion – Intelligent Candidate Data Transformation Pipeline
