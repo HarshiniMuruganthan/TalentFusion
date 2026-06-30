@@ -1,820 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>TalentFusion AI</title>
-
-    <!-- Google Fonts -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentFusion | Intelligent Candidate Platform</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- CSS -->
-
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
-
 <body>
 
-<!-- Animated Background -->
-
-<div class="bg-gradient"></div>
-
-<div class="grid-overlay"></div>
-
-<div class="blur-circle one"></div>
-
-<div class="blur-circle two"></div>
-
-<!-- ===========================
-        NAVIGATION
-============================ -->
-
-<nav class="navbar">
-
-    <div class="logo">
-
-        <i class="fa-solid fa-brain"></i>
-
-        <span>TalentFusion AI</span>
-
-    </div>
-
-    <div class="nav-links">
-
-        <a href="#">Dashboard</a>
-
-        <a href="#">Pipeline</a>
-
-        <a href="#">Analytics</a>
-
-        <a href="#">About</a>
-
-    </div>
-
-</nav>
-
-<!-- ===========================
-          HERO
-============================ -->
-
-<section class="hero">
-
-    <div class="hero-left">
-
-        <span class="badge">
-
-            Intelligent Candidate Transformation Engine
-
-        </span>
-
-        <h1>
-
-            Transform
-            <span>Resume Data</span>
-
-            Into
-
-            Enterprise Ready
-
-            Candidate Intelligence
-
-        </h1>
-
-        <p>
-
-            TalentFusion AI automatically extracts,
-            validates, merges, scores and enriches
-            candidate profiles from Resume PDFs
-            and Recruiter CSVs using an intelligent
-            transformation pipeline.
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <button class="primary-btn">
-
-                <i class="fa-solid fa-rocket"></i>
-
-                Start Transformation
-
-            </button>
-
-            <button class="secondary-btn">
-
-                <i class="fa-solid fa-circle-play"></i>
-
-                Watch Demo
-
-            </button>
-
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>TalentFusion</h2>
+                    <p>Enterprise Candidate Platform</p>
+                </div>
+            </div>
+            <div class="nav-status">
+                <div class="status-dot"></div>
+                <span>Engine Active</span>
+            </div>
         </div>
+    </header>
 
-        <div class="stats">
-
-            <div>
-
-                <h2>98%</h2>
-
-                <p>Accuracy</p>
-
+    <main class="container">
+        <!-- ============================================
+             UPLOAD SECTION
+             ============================================ -->
+        <section id="upload-deck">
+            <div class="hero-section">
+                <h1>Transform Candidate Data</h1>
+                <p>Automate resume parsing, conflict resolution, quality scoring, and profile generation into a single unified workspace.</p>
             </div>
 
-            <div>
+            <form id="uploadForm">
+                <div class="upload-grid">
+                    <!-- Resume Card -->
+                    <div class="upload-card pdf-card">
+                        <div class="upload-icon">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <h3>Candidate Resume</h3>
+                        <p>Upload the candidate's PDF resume</p>
+                        <div class="file-input-wrapper">
+                            <span class="custom-file-btn">Select Resume</span>
+                            <input type="file" id="resume" accept=".pdf" required>
+                        </div>
+                        <div class="selected-file-name" id="resume-file-name">
+                            <i class="fa-solid fa-check"></i> <span>No file chosen</span>
+                        </div>
+                    </div>
 
-                <h2>50K+</h2>
-
-                <p>Profiles</p>
-
-            </div>
-
-            <div>
-
-                <h2>0.95</h2>
-
-                <p>Confidence</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Right Side Illustration -->
-
-    <div class="hero-right">
-
-        <div class="hero-card">
-
-            <div class="card-top">
-
-                <span class="online"></span>
-
-                AI Engine Running
-
-            </div>
-
-            <div class="ai-circle">
-
-                <i class="fa-solid fa-brain"></i>
-
-            </div>
-
-            <div class="status">
-
-                <p>
-
-                    Resume Extraction
-
-                </p>
-
-                <div class="bar">
-
-                    <div class="fill fill1"></div>
-
+                    <!-- Recruiter CSV Card -->
+                    <div class="upload-card csv-card">
+                        <div class="upload-icon">
+                            <i class="fa-solid fa-file-csv"></i>
+                        </div>
+                        <h3>Recruiter CSV</h3>
+                        <p>Upload the associated recruiter data</p>
+                        <div class="file-input-wrapper">
+                            <span class="custom-file-btn">Select CSV File</span>
+                            <input type="file" id="csv" accept=".csv" required>
+                        </div>
+                        <div class="selected-file-name" id="csv-file-name">
+                            <i class="fa-solid fa-check"></i> <span>No file chosen</span>
+                        </div>
+                    </div>
                 </div>
 
-            </div>
+                <div class="process-action">
+                    <button type="submit" class="btn-primary" id="generateBtn">
+                        <i class="fa-solid fa-bolt"></i> Generate Candidate Profile
+                    </button>
+                </div>
+            </form>
+        </section>
 
-            <div class="status">
-
-                <p>
-
-                    Conflict Resolution
-
-                </p>
-
-                <div class="bar">
-
-                    <div class="fill fill2"></div>
-
+        <!-- ============================================
+             PROCESSING OVERLAY
+             ============================================ -->
+        <section id="processing" style="display: none;">
+            <div class="processing-overlay">
+                <div class="loader-container">
+                    <div class="loader-ring"></div>
+                </div>
+                <h2>Analyzing Candidate Profile</h2>
+                <p>Processing files, cleaning schemas, and evaluating conflicts...</p>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-fill" id="progress-bar"></div>
                 </div>
 
+                <div class="pipeline-steps" id="steps">
+                    <div class="step-item" data-step="0"><i class="fa-solid fa-file-arrow-up"></i> Ingesting candidate sources</div>
+                    <div class="step-item" data-step="1"><i class="fa-solid fa-wand-magic-sparkles"></i> Extracting profile fields</div>
+                    <div class="step-item" data-step="2"><i class="fa-solid fa-shield-halved"></i> Normalizing data schemas</div>
+                    <div class="step-item" data-step="3"><i class="fa-solid fa-code-merge"></i> Resolving source conflicts</div>
+                    <div class="step-item" data-step="4"><i class="fa-solid fa-check-double"></i> Executing validation rules</div>
+                    <div class="step-item" data-step="5"><i class="fa-solid fa-chart-pie"></i> Calculating quality metrics</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CANDIDATE DASHBOARD
+             ============================================ -->
+        <section id="dashboard" style="display: none;" class="dashboard-container">
+            <!-- Candidate Header Card -->
+            <div class="candidate-header-card">
+                <div class="candidate-identity">
+                    <div class="candidate-avatar">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div class="candidate-title">
+                        <h2 id="name">Name</h2>
+                        <p>
+                            <span id="designation">Software Engineer</span> 
+                            <span class="title-sep">|</span> 
+                            <span id="company">Company</span>
+                        </p>
+                    </div>
+                </div>
+                <div id="validation-badge-container">
+                    <!-- Will be populated dynamically -->
+                </div>
             </div>
 
-            <div class="status">
+            <!-- Metrics Dashboard -->
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-icon indigo">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h5>Quality Grade</h5>
+                        <h2 id="grade">-</h2>
+                        <p>Data Quality Rank</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon cyan">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h5>Confidence</h5>
+                        <h2 id="confidence">0%</h2>
+                        <p>Pipeline extraction score</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon emerald">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h5>Trust Score</h5>
+                        <h2 id="trust">0</h2>
+                        <p>Source authority index</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon amber">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h5>Completion</h5>
+                        <h2 id="completion">0%</h2>
+                        <p>Filled profile metrics</p>
+                    </div>
+                </div>
+            </div>
 
-                <p>
-
-                    Profile Validation
-
-                </p>
-
-                <div class="bar">
-
-                    <div class="fill fill3"></div>
-
+            <!-- Profile Details Split Grid -->
+            <div class="dashboard-grid">
+                <!-- Left panel: Personal and Source Info -->
+                <div class="info-card">
+                    <h3 class="card-title"><i class="fa-solid fa-address-card"></i> Contact & Meta</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span>Email</span>
+                            <p id="email">-</p>
+                        </div>
+                        <div class="info-item">
+                            <span>Phone</span>
+                            <p id="phone">-</p>
+                        </div>
+                        <div class="info-item">
+                            <span>Location</span>
+                            <p id="location">-</p>
+                        </div>
+                        <div class="info-item">
+                            <span>Conflict Status</span>
+                            <p id="conflict-status">-</p>
+                        </div>
+                    </div>
                 </div>
 
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-<div id="dashboard" class="dashboard">
-
-    <div class="dashboard-header">
-
-        <div class="avatar">
-
-            <div class="avatar-ring"></div>
-
-            <div class="avatar-center">
-                AI
-            </div>
-
-        </div>
-
-        <div>
-
-            <h2 id="name">Candidate Name</h2>
-
-            <p class="role" id="designation">
-                Software Engineer
-            </p>
-
-            <span class="badge">
-                VERIFIED PROFILE
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <!-- Metrics -->
-
-    <div class="metric-grid">
-
-        <div class="metric-card">
-
-            <span>Confidence</span>
-
-            <h3 id="confidence">95%</h3>
-
-        </div>
-
-        <div class="metric-card">
-
-            <span>Trust Score</span>
-
-            <h3 id="trust">98</h3>
-
-        </div>
-
-        <div class="metric-card">
-
-            <span>Company</span>
-
-            <h3 id="company">TCS</h3>
-
-        </div>
-
-        <div class="metric-card">
-
-            <span>Location</span>
-
-            <h3 id="location">Chennai</h3>
-
-        </div>
-
-    </div>
-
-
-    <!-- Candidate Information -->
-
-    <div class="profile-card">
-
-        <div class="profile-item">
-
-            <h4>Email</h4>
-
-            <p id="email"></p>
-
-        </div>
-
-        <div class="profile-item">
-
-            <h4>Phone</h4>
-
-            <p id="phone"></p>
-
-        </div>
-
-    </div>
-
-
-    <!-- Skills -->
-
-    <div class="skills-card">
-
-        <h3>AI Detected Skills</h3>
-
-        <div id="skills" class="skills-container">
-
-        </div>
-
-    </div>
-
-</div>
-<!-- ===========================
-     AI DASHBOARD
-============================ -->
-
-<section id="dashboard" class="dashboard">
-
-    <div class="dashboard-title">
-
-        <h2>
-            Candidate Intelligence Profile
-        </h2>
-
-        <p>
-            Unified profile generated by TalentFusion AI
-        </p>
-
-    </div>
-
-    <div class="dashboard-grid">
-
-        <!-- LEFT PANEL -->
-
-        <div class="profile-panel glass">
-
-            <div class="avatar">
-
-                <div class="avatar-circle">
-                    <span id="avatarLetter">H</span>
-                </div>
-
-            </div>
-
-            <h2 id="name">
-                Candidate Name
-            </h2>
-
-            <p id="designation">
-                Software Engineer
-            </p>
-
-            <div class="company-chip">
-
-                <span id="company">
-                    TCS
-                </span>
-
-            </div>
-
-        </div>
-
-        <!-- RIGHT PANEL -->
-
-        <div class="info-panel glass">
-
-            <div class="info-item">
-
-                <label>Email</label>
-
-                <p id="email"></p>
-
-            </div>
-
-            <div class="info-item">
-
-                <label>Phone</label>
-
-                <p id="phone"></p>
-
-            </div>
-
-            <div class="info-item">
-
-                <label>Location</label>
-
-                <p id="location"></p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- METRIC CARDS -->
-
-    <div class="metrics">
-
-        <div class="metric-card">
-
-            <h4>Confidence</h4>
-
-            <span id="confidence">95%</span>
-
-        </div>
-
-        <div class="metric-card">
-
-            <h4>Trust Score</h4>
-
-            <span id="trust">98</span>
-
-        </div>
-
-        <div class="metric-card">
-
-            <h4>Skills</h4>
-
-            <span id="skillCount">0</span>
-
-        </div>
-
-        <div class="metric-card">
-
-            <h4>Status</h4>
-
-            <span class="online">
-                VERIFIED
-            </span>
-
-        </div>
-
-    </div>
-
-    <!-- SKILLS -->
-
-    <div class="glass skills-section">
-
-        <h3>
-            Technical Skills
-        </h3>
-
-        <div id="skills" class="skills-list">
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =====================================
-        AI ANALYTICS CENTER
-====================================== -->
-
-<section class="analytics-section">
-
-    <div class="section-title">
-
-        <h2>AI Profile Analytics</h2>
-
-        <p>
-            Machine-generated insights and quality assessment
-        </p>
-
-    </div>
-
-    <div class="analytics-grid">
-
-        <!-- Confidence -->
-
-        <div class="glass analytics-card">
-
-            <div class="circle confidence-circle">
-
-                <div class="circle-inner">
-
-                    <h1 id="confidenceCircle">
-                        95%
-                    </h1>
-
-                    <span>Confidence</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Trust -->
-
-        <div class="glass analytics-card">
-
-            <div class="circle trust-circle">
-
-                <div class="circle-inner">
-
-                    <h1 id="trustCircle">
-                        98
-                    </h1>
-
-                    <span>Trust Score</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Data Quality -->
-
-        <div class="glass analytics-card">
-
-            <div class="quality-box">
-
-                <h3>Data Quality</h3>
-
-                <h1 id="grade">
-                    A+
-                </h1>
-
-                <p id="qualityScore">
-
-                    Overall Quality Score
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- Validation -->
-
-        <div class="glass analytics-card">
-
-            <div class="status-box">
-
-                <i class="fa-solid fa-circle-check"></i>
-
-                <h2 id="validationStatus">
-
-                    VALIDATED
-
-                </h2>
-
-                <p>
-
-                    Enterprise Rules Passed
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =====================================
-        CONFLICTS & AUDIT
-====================================== -->
-
-<section class="enterprise-section">
-
-    <!-- Conflict Report -->
-
-    <div class="glass enterprise-card">
-
-        <div class="section-header">
-
-            <i class="fa-solid fa-code-compare"></i>
-
-            <div>
-
-                <h2>Conflict Resolution Engine</h2>
-
-                <p>
-                    AI detected inconsistencies between Resume and Recruiter CSV
-                </p>
-
-            </div>
-
-        </div>
-
-        <div id="conflictsContainer">
-
-            <div class="conflict-card">
-
-                <div class="conflict-field">
-
-                    <h4>Name</h4>
-
-                </div>
-
-                <div class="conflict-values">
-
+                <!-- Right panel: Skills and Details -->
+                <div class="details-card">
                     <div>
-
-                        <label>Resume</label>
-
-                        <p>Harshini M</p>
-
+                        <h3 class="card-title"><i class="fa-solid fa-screwdriver-wrench"></i> Technical Skills</h3>
+                        <div class="skills-container" id="skills-container">
+                            <!-- Populated dynamically -->
+                        </div>
                     </div>
 
                     <div>
-
-                        <label>Recruiter CSV</label>
-
-                        <p>Harshini</p>
-
+                        <h3 class="card-title"><i class="fa-solid fa-briefcase"></i> Experience</h3>
+                        <div class="details-list" id="experience-list">
+                            <!-- Populated dynamically -->
+                        </div>
                     </div>
 
                     <div>
-
-                        <label>Winner</label>
-
-                        <span class="winner">
-
-                            Recruiter CSV
-
-                        </span>
-
+                        <h3 class="card-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                        <div class="details-list" id="education-list">
+                            <!-- Populated dynamically -->
+                        </div>
                     </div>
+                </div>
+            </div>
 
+            <!-- Conflict Resolution Section -->
+            <div class="section-card" id="conflicts-section">
+                <h3 class="card-title"><i class="fa-solid fa-shuffle"></i> Source Conflict Resolutions</h3>
+                <div class="conflict-table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Resume Source</th>
+                                <th>CSV Source</th>
+                                <th>Merged Winner</th>
+                                <th>Resolution Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody id="conflict-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Rules & Validation Grid -->
+            <div class="rules-grid">
+                <!-- Business Rules Evaluation -->
+                <div class="section-card">
+                    <h3 class="card-title"><i class="fa-solid fa-scale-balanced"></i> Business Rules</h3>
+                    <div class="evaluator-list" id="rules-list">
+                        <!-- Populated dynamically -->
+                    </div>
                 </div>
 
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- Audit Timeline -->
-
-    <div class="glass enterprise-card">
-
-        <div class="section-header">
-
-            <i class="fa-solid fa-clock-rotate-left"></i>
-
-            <div>
-
-                <h2>Pipeline Audit Trail</h2>
-
-                <p>
-
-                    Every transformation step performed by TalentFusion AI
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <div id="auditTimeline" class="timeline">
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h4>Resume Loaded</h4>
-
-                    <p>
-
-                        Candidate resume imported successfully
-
-                    </p>
-
+                <!-- Validation Issues -->
+                <div class="section-card">
+                    <h3 class="card-title"><i class="fa-solid fa-circle-exclamation"></i> Profile Errors</h3>
+                    <div class="evaluator-list" id="validation-list">
+                        <!-- Populated dynamically -->
+                    </div>
                 </div>
-
             </div>
 
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h4>Extraction Completed</h4>
-
-                    <p>
-
-                        AI extracted candidate information
-
-                    </p>
-
-                </div>
-
+            <!-- Footer Actions -->
+            <div class="action-drawer">
+                <button class="btn-secondary" id="btn-reset">
+                    <i class="fa-solid fa-arrow-rotate-left"></i> Analyze New Candidate
+                </button>
+                <button class="btn-primary" id="btn-download-json">
+                    <i class="fa-solid fa-download"></i> Download Profile JSON
+                </button>
             </div>
+        </section>
+    </main>
 
-            <div class="timeline-item">
+    <footer>
+        <p>&copy; 2026 TalentFusion Candidate Intelligence Engine. All Rights Reserved.</p>
+    </footer>
 
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h4>Normalization</h4>
-
-                    <p>
-
-                        Data standardized into enterprise format
-
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot success"></div>
-
-                <div class="timeline-content">
-
-                    <h4>Validation Passed</h4>
-
-                    <p>
-
-                        Candidate profile verified successfully
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================
-        DOWNLOAD SECTION
-====================================== -->
-
-<section class="download-section">
-
-    <div class="glass download-card">
-
-        <h2>
-
-            Export Candidate Intelligence
-
-        </h2>
-
-        <p>
-
-            Download AI generated reports and candidate profile.
-
-        </p>
-
-        <div class="download-buttons">
-
-            <button>
-
-                <i class="fa-solid fa-file-code"></i>
-
-                Candidate JSON
-
-            </button>
-
-            <button>
-
-                <i class="fa-solid fa-file-lines"></i>
-
-                Transformation Report
-
-            </button>
-
-            <button>
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-                Audit Log
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
+    <script src="/static/js/script.js"></script>
 </body>
-
 </html>
