@@ -1,0 +1,12 @@
+{
+    "pipeline_status": "Completed",
+    "generated_at": "2026-06-29 23:26:38",
+    "execution_time_seconds": 0.091,
+    "sources_processed": 2,
+    "records_processed": 1,
+    "fields_extracted": 7,
+    "fields_merged": 9,
+    "overall_confidence": 0.95,
+    "profile_completion": 100,
+    "validation_status": true
+}
